@@ -40,8 +40,8 @@ class SideNav extends Component {
                 <Link to="/home" id="fr" className="link">Chez moi</Link>
                 <Link to="/find" id="en" className="link">Find Data</Link>
                 <Link to="/find" id="fr" className="link">Trouver les données</Link>
-                <Link to="/visualization" id="en" className="link">Visualize Data</Link>
-                <Link to="/visualization" id="fr" className="link">Visualisez les données</Link>
+                <Link to="/visualize" id="en" className="link">Visualize Data</Link>
+                <Link to="/visualize" id="fr" className="link">Visualisez les données</Link>
                 <Link to="/about" id="en" className="link">About us</Link>
                 <Link to="/about" id="fr" className="link">À propos de ça</Link>
             </div>

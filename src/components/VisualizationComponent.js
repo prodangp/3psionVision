@@ -82,7 +82,16 @@ class Visualization extends Component {
                     <Col md-4 sm-12>
                         <Image src={this.state.URL} fluid/>
                     </Col>
+                    
                 </Row> 
+                <Row>
+                    <Col md-auto/>
+                    <Col md-4 sm-12>
+                        <Link to = "/visualize"  id="en"><button class="button_visualize"><span> Back </span></button></Link>
+                        <Link to = "/visualize" id="fr"><button class="button_visualize"><span> Retour </span></button></Link>
+                    </Col>
+                    <Col md-auto/>
+                </Row>
             </div>
             
         )

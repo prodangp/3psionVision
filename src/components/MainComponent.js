@@ -7,8 +7,10 @@ import Mobile from './MobileComponent'
 import Local from './LocalComponent'
 import About from './AboutComponent'
 import Visualization from './VisualizationComponent'
+import Visualize3D from './Visualize3DComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { VIEWS } from '../assets/views';
+import Visualize from './VisualizeComponent';
 
 
 
@@ -44,7 +46,10 @@ class Main extends Component {
                 <Route path="/visualization/:categoryId" component={CategoryWithName}/>
                 <Route path="/local" component={() => <Local/>}/>
                 <Route path="/about" component={() => <About/>}/>
+                <Route path="/visualize" component={() => <Visualize/>}/>
+                <Route path="/visualize3D" component={() => <Visualize3D/>}/>
                 <Redirect to="/home"/>
+
               </Switch>
         <Footer/>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

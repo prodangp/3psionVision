@@ -29,7 +29,7 @@ class About extends Component {
                 </h1></i>
 
                 <audio controls autoplay>
-                <source src="7.mp3" type="audio/mpeg"/>
+                <source src={require("../assets/7.mp3")} controls autoPlay/>
                 </audio></center>
           
         )}}
