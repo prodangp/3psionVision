@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Amplify from "aws-amplify";
+import awsExports from "./aws-exports";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap-social/bootstrap-social.css'
+Amplify.configure(awsExports);
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,3 +21,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+

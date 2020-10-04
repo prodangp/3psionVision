@@ -1,0 +1,82 @@
+<h1 id="date_paragraph"> Ana are mizerie! </h1>
+
+<form name="myForm" action=""  method="post">
+  Date: <input type="date" id="date_history" name="date_history"><br>
+  Distance: 
+  <input type="radio" id="250m" name="distance" value="250m">
+  <label for="250m">250m</label>
+  <input type="radio" id="500m" name="distance" value="500m">
+  <label for="500m">500m</label>
+  <input type="radio" id="1km" name="distance" value="1km">
+  <label for="other">1km</label>
+  <input type="radio" id="2km" name="distance" value="2km">
+  <label for="other">2km</label><br>
+  Map Type: 
+  <input type="radio" id="4326" name="map" value="4326">
+  <label for="4326">Geographic</label>
+  <input type="radio" id="3857" name="map" value="3857">
+  <label for="3857">Web Mercator</label>
+  <input type="radio" id="3413" name="map" value="3413">
+  <label for="3413">Arctic Polar Stereographic</label>
+  <input type="radio" id="3031" name="map" value="3031">
+  <label for="3031">Antarctic Polar Stereographic</label><br>
+
+  <input type="button" value="Button" onclick="return validateForm()">
+</form>
+    
+<script>
+
+  function validateForm() {
+    var date = document.forms["myForm"]["date_history"].value;
+    var distance = "0m";
+    var EPSG = "0";
+    var URL = "\"https://gibs.earthdata.nasa.gov/wmts/epsg";
+
+    if (document.getElementById("250m").checked == true) {
+      distance = "250m";
+      distance = distance.concat("/6");
+    } else if (document.getElementById("500m").checked == true) {
+      distance = "500m";
+      distance = distance.concat("/5");
+    } else if (document.getElementById("1km").checked == true) {
+      distance = "1km";
+      distance = distance.concat("/4");
+    } else if (document.getElementById("2km").checked == true) {
+      distance = "2km";
+      distance = distance.concat("/3");
+    }
+
+    if (document.getElementById("4326").checked == true) {
+      EPSG = "4326/";
+    } else if (document.getElementById("3857").checked == true) {
+      EPSG = "3857/";
+    } else if (document.getElementById("3413").checked == true) {
+      EPSG = "3413/";
+    } else if (document.getElementById("3031").checked == true) {
+      EPSG = "3031/";
+    }
+
+    if (date == "") {
+      alert("You must choose a date!");
+      return false;
+    } else if (distance == "0m") {
+      alert("You must choose a distance!");
+      return false;
+    } else if (EPSG == "0") {
+      alert("You must choose a map type!");
+      return false;
+    } else {
+      URL = "<img src=".concat(URL);
+      URL = URL.concat(EPSG);
+      URL = URL.concat("best/MODIS_Terra_CorrectedReflectance_TrueColor/default/");
+      URL = URL.concat(date);
+      URL = URL.concat("/");
+      URL = URL.concat(distance);
+      URL = URL.concat("/13/36.jpg\"");
+      URL = URL.concat(" height=\"200\" width=\"200\"/>");
+      document.getElementById("date_paragraph").innerHTML = URL;
+      return true;
+    }
+  }
+
+</script>

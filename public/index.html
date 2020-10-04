@@ -40,4 +40,76 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script type="text/javascript" src="index.js"></script>
+  <script>
+              var x = document.getElementById("demo");
+
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+
+            } else { 
+              x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+          }
+
+          function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude + 
+            "<br>Longitude: " + position.coords.longitude;
+            var uluru = {lat: position.coords.latitude, lng: position.coords.longitude};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 4, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+          }
+
+          var french = document.getElementById('fr_click'),
+      english = document.getElementById('en_click'),
+      fr_txt = document.querySelectorAll('#fr'),
+      en_txt = document.querySelectorAll('#en'),
+      nb_fr = fr_txt.length,
+      nb_en = en_txt.length;
+  
+  french.addEventListener('click', function() {
+      langue(french,english);
+  }, false);
+  
+  english.addEventListener('click', function() {
+      langue(english,french);
+  }, false);
+  
+  function langue(langueOn,langueOff){
+      if (!langueOn.classList.contains('current_lang')) {
+          langueOn.classList.toggle('current_lang');
+          langueOff.classList.toggle('current_lang');
+      }
+      if(langueOn.innerHTML == 'Fr'){
+          afficher(fr_txt, nb_fr);
+          cacher(en_txt, nb_en);
+      }
+      else if(langueOn.innerHTML == 'En'){
+          afficher(en_txt, nb_en);
+          cacher(fr_txt, nb_fr);
+      }
+  }
+  
+  function afficher(txt,nb){
+      for(var i=0; i < nb; i++){
+          txt[i].style.display = 'block';
+      }
+  }
+  function cacher(txt,nb){
+      for(var i=0; i < nb; i++){
+          txt[i].style.display = 'none';
+      }
+  }
+  function initLang(){
+      langue(french,english);
+  }
+  initLang();
+  </script>
+  <script defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0A4m0hWin-B9FVtT5Gwgu3xoMtnv0-7s&callback=initMap"
+          type="text/javascript"></script>
 </html>
